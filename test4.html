@@ -7,18 +7,12 @@
 </head>
 <body>
 <div id="qunit"></div>
-<div id="qunit-fixture">
-	<input id="input" type="text" placeholder="placeholder text" />
-</div>
+<div id="qunit-fixture"></div>
 <script src="qunit/qunit-1.12.0.js"></script>
-<script src="test2.js"></script>
+<script src="test4.js"></script>
 <script >
-function format(string, values) {
-    for (var key in values) {
-        string = string.replace(new RegExp("\{" + key + "}" , "g"), values[key]);
-    }
-    return string;
-}
+//异步测试
+
 </script>
 </body>
 </html>

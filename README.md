@@ -81,7 +81,7 @@ test("测试一个函数", function() {
 ```html
 Result:     
 "Hello, World, how is {name} today?"
-Diff:   
+Diff:     
  "Hello,  World,  how  is World {name}  today?" 
 ```
 我们发现代码的第2个“world”没有被替换，于是我们修改format函数：
@@ -98,7 +98,9 @@ function format(string, values) {
 
 ## ok()和equal() ##
 前面的测试案例中使用了他们。
+
 状态判断：ok( state, [message] ) 是QUnit中最常用的一个判断函数，只能判断true和false。
+
 相等判断：equal( actual, expected, [message] )
 还有更多方法：http://api.qunitjs.com/category/assert/
 
