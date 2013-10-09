@@ -105,6 +105,53 @@ function format(string, values) {
 还有更多方法：http://api.qunitjs.com/category/assert/
 
 ## 异步测试
+对于异步程序的测试，如setTimeout、setInterval、Ajax等情况，按照上面的方法，在异步调用执行之前，测试就已完成并输出了结果。这时，配合使用QUnit提供的两个函数：stop( [timeout] ) 和 start()，也可以轻松搞定。
+```javascript
+//异步测试
+module( "异步测试示例" );
+//setTimeout
+test('异步测试', function() {
+  // 暂停测试
+  stop();
+ 
+  setTimeout(function() {
+    ok(true, '完成运行');
+    //待测试完成后，恢复
+    start();
+  }, 100)
+})
+//另一种形式
+asyncTest('异步测试', function() {
+  setTimeout(function() {
+    ok(true);
+    //待测试完成后，恢复
+    start();
+  }, 100)
+})
+```
+Ajax也类似：
+```javascript
+//Ajax测试
+function ajax(successCallback) {
+  $.ajax({
+    url: 'server.php',
+    success: successCallback
+  });
+}
+ 
+test('asynchronous test', function() {
+  // 暂停测试
+  stop();
+ 
+  ajax(function() {
+    // 异步调用判断
+    
+    //异步测试完成后，恢复
+    start();
+  })
+})
+```
+
 
 
 
